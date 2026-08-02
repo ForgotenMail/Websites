@@ -3,13 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Web Page</title>
+    <title>liam / liamis</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <h1>Hello, World!</h1>
-    <p>This is a basic HTML file.</p>
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar">
+
+        <!-- Profile Picture -->
+        <div class="avatar-wrap">
+            <div class="avatar">
+                <span>YN</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="name">Liam Ribble</div>
+            <div class="handle">@ForgottenMail</div>
+        
+            <div class="sidebar-section">
+                <span class="sidebar-label">Status</span>
+                <div class="status-dropdown">
+                    <div class="status-dropdown-header">
+                        <span class="status-dropdown-title">Freshman</span>
+                        <span class="status-dropdown-chevron">&#9662;</span>
+                    </div>
+                    <div class="status-dropdown-body">
+                        <div class="status-line">"<REDACTED>" Highschool</div>
+                        <div class="status-line status-year">2026-2030</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="bio">
+                Full Stack Developer in the making here. 
+                I make websites for fun, aswell as doing whatever seems interesting to me
+                I like making things that are efficient, novel, and real world application
+                Feel free to reach out! Discord works best (MIT? ... (゜-゜))
+            </p>
+        </div>
+
+        <!-- Education / Status -->
+
+        <div class="sidebar-section">
+            <span class="sidebar-label">Skills</span>
+            <div class="skill-tags">
+                <span class="skill-tag">Golang</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Terminal Purism</span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">Javascript</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">Linux</span>
+                <span class="skill-tag">Imulse Buying</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <span class="sidebar-label">Contacts</span>
+            <div class="contact-list">
+                <a href="mailto:notliam43@gmail.com" class="contact-item">
+                    <span class="contact-icon">@</span> notliam43@gmail.com
+                </a>
+                <a href="https://github.com/ForgottenMail" class="contact-item">
+                    <span class="contact-icon">~</span> github.com/ForgottenMail
+                </a>
+                <a href="https://discord.com/users/989271986901508126" class="contact-item">
+                    <span class="contact-icon">#</span> @ForgottenMail
+                </a>
+                <a href="https://liamis.dev" class="contact-item">
+                    <span class="contact-icon">&gt;</span> liamis.dev
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ── Main Content ── -->
+    <main class="main">
+        <nav class="tabs">
+            <button class="tab active" data-tab="blogs">Blogs</button>
+            <button class="tab" data-tab="projects">Projects</button>
+        </nav>
+
+        <!-- Blogs Tab -->
+        <section class="tab-content active" id="blogs">
+            <div class="blog-grid"></div>
+        </section>
+
+        <!-- Projects Tab -->
+        <section class="tab-content" id="projects">
+            <div class="project-grid"></div>
+        </section>
+    </main>
+
+    <script src="blogs/data.js"></script>
+    <script src="projects/data.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>
-
