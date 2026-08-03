@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>liam / liamis</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Building a Ray Tracer From Scratch — liam / liamis</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
     <!-- ── Sidebar ── -->
     <aside class="sidebar">
 
-        <!-- Profile Picture -->
         <div class="avatar-wrap">
             <div class="avatar">
                 <span>YN</span>
@@ -43,8 +42,6 @@
                 Feel free to reach out! Discord works best (MIT? ... (゜-゜))
             </p>
         </div>
-
-        <!-- Education / Status -->
 
         <div class="sidebar-section">
             <span class="sidebar-label">Skills</span>
@@ -82,21 +79,23 @@
 
     <!-- ── Main Content ── -->
     <main class="main">
-        <nav class="tabs">
-            <a href="blogs/" class="tab active">Blogs</a>
-            <a href="projects/" class="tab">Projects</a>
-        </nav>
+        <a href="./" class="back-link">&larr; Back to Blogs</a>
 
-        <div class="home-content">
-            <h1 class="home-title">Welcome</h1>
-            <p class="home-subtitle">
-                I'm a full‑stack developer who enjoys building things that are efficient, novel, and useful.
-                Dive into my <a href="blogs/">blogs</a> or check out my <a href="projects/">projects</a>.
-            </p>
+        <div class="test-blog-placeholder">
+            <p>test blog, actual blogs soon!</p>
         </div>
     </main>
 
-    <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const statusDropdown = document.querySelector('.status-dropdown');
+        if (statusDropdown) {
+            statusDropdown.addEventListener('click', () => {
+                statusDropdown.classList.toggle('open');
+            });
+        }
+    });
+    </script>
 
 </body>
 </html>

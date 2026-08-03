@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>liam / liamis</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Projects — liam / liamis</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
     <!-- ── Sidebar ── -->
     <aside class="sidebar">
 
-        <!-- Profile Picture -->
         <div class="avatar-wrap">
             <div class="avatar">
                 <span>YN</span>
@@ -43,8 +42,6 @@
                 Feel free to reach out! Discord works best (MIT? ... (゜-゜))
             </p>
         </div>
-
-        <!-- Education / Status -->
 
         <div class="sidebar-section">
             <span class="sidebar-label">Skills</span>
@@ -83,20 +80,62 @@
     <!-- ── Main Content ── -->
     <main class="main">
         <nav class="tabs">
-            <a href="blogs/" class="tab active">Blogs</a>
-            <a href="projects/" class="tab">Projects</a>
+            <a href="../blogs/" class="tab">Blogs</a>
+            <a href="./" class="tab active">Projects</a>
         </nav>
 
-        <div class="home-content">
-            <h1 class="home-title">Welcome</h1>
-            <p class="home-subtitle">
-                I'm a full‑stack developer who enjoys building things that are efficient, novel, and useful.
-                Dive into my <a href="blogs/">blogs</a> or check out my <a href="projects/">projects</a>.
-            </p>
+        <div class="project-grid">
+
+            <div class="project-card">
+                <div class="project-title">oxcrate</div>
+                <p class="project-desc">A minimal toolchain manager for Rust projects. Pin toolchain versions per-project, switch with a single command.</p>
+                <div class="project-langs">
+                    <span class="lang-tag">Rust</span>
+                    <span class="lang-tag">Shell</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">slate</div>
+                <p class="project-desc">Terminal-based note-taking app with vim bindings, Markdown rendering, and encrypted local storage.</p>
+                <div class="project-langs">
+                    <span class="lang-tag">Go</span>
+                    <span class="lang-tag">SQLite</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">driftr</div>
+                <p class="project-desc">Real-time collaborative whiteboard. Infinite canvas, WebSocket sync, and vector drawing tools.</p>
+                <div class="project-langs">
+                    <span class="lang-tag">TypeScript</span>
+                    <span class="lang-tag">React</span>
+                    <span class="lang-tag">WebSocket</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">spore</div>
+                <p class="project-desc">A lightweight process supervisor for Linux. Manage, restart, and monitor background services with a simple config file.</p>
+                <div class="project-langs">
+                    <span class="lang-tag">Python</span>
+                    <span class="lang-tag">Linux</span>
+                </div>
+            </div>
+
         </div>
     </main>
 
-    <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const statusDropdown = document.querySelector('.status-dropdown');
+        if (statusDropdown) {
+            statusDropdown.addEventListener('click', () => {
+                statusDropdown.classList.toggle('open');
+            });
+        }
+    });
+    </script>
 
 </body>
 </html>
