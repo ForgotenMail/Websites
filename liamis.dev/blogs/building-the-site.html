@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Building the Site — liam / liamis</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="main">
+        <a href="../" class="back-link">&larr; Back to Blogs</a>
+
+        <article class="blog-article">
+
+            <!-- ══════════ ARTICLE HEADER ══════════ -->
+
+            <h1 class="blog-article-title">Building the site</h1>
+            <div class="blog-article-date">YYYY-MM-DD</div>
+
+
+            <!-- ══════════ INTRO PARAGRAPH ══════════ -->
+
+            <p>
+                This is an introduction paragraph. Write a hook here to grab the reader's
+                attention. You can use <strong>bold text</strong> for emphasis, and
+                <em>italic text</em> for subtle stress. You can also include
+                <a href="https://example.com">links to other sites</a> which will
+                appear in the accent green colour.
+            </p>
+
+
+            <!-- ══════════ SECTION HEADING ══════════ -->
+
+            <h2>Section Heading</h2>
+
+            <p>
+                Use <code>&lt;h2&gt;</code> tags for section headings within your
+                article. Inline <code>&lt;code&gt;</code> snippets look like this:
+                <code>const answer = 42;</code>. They're great for mentioning
+                function names, variable names, or short terminal commands like
+                <code>git push origin main</code>.
+            </p>
+
+            <p>
+                You can have multiple paragraphs per section. Keep them focused —
+                each paragraph should cover a single idea. The line height and
+                spacing are already set for comfortable reading.
+            </p>
+
+
+            <!-- ══════════ CODE BLOCK ══════════ -->
+
+            <h2>Code Blocks</h2>
+
+            <p>
+                For longer code snippets use a <code>&lt;pre&gt;</code> block with
+                a <code>&lt;code&gt;</code> tag inside:
+            </p>
+
+<pre><code>package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, world!")
+}</code></pre>
+
+            <p>
+                The code block has a dark background with a subtle border.
+                Code inside <code>&lt;pre&gt;</code> uses the site's monospace font
+                and has comfortable line height.
+            </p>
+
+
+            <!-- ══════════ ANOTHER SECTION ══════════ -->
+
+            <h2>Lists (Manual)</h2>
+
+            <p>
+                There's no automatic list styling, but you can create lists
+                manually with text:
+            </p>
+
+            <p>
+                — First item in the list<br>
+                — Second item, which might be longer<br>
+                — Third item to wrap things up
+            </p>
+
+            <p>
+                Or numbered with <strong>1.</strong>, <strong>2.</strong>, etc.<br>
+                1. First step<br>
+                2. Second step<br>
+                3. Third step
+            </p>
+
+
+            <!-- ══════════ CONCLUSION ══════════ -->
+
+            <h2>Wrapping Up</h2>
+
+            <p>
+                End your article with a conclusion that summarises your main points
+                or gives the reader something to take away. This is also a good
+                place to link to related articles or your <a href="#">projects</a>.
+            </p>
+
+            <p>
+                That's it! Copy this file, rename it, and replace all the
+                placeholder content with your own writing.
+            </p>
+
+        </article>
+    </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const statusDropdown = document.querySelector('.status-dropdown');
+        if (statusDropdown) {
+            statusDropdown.addEventListener('click', () => {
+                statusDropdown.classList.toggle('open');
+            });
+        }
+    });
+    </script>
+
+</body>
+</html>
