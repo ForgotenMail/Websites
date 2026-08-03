@@ -303,7 +303,6 @@ body {
 
 .home-subtitle a:hover {
     color: var(--green-hover);
-    text-decoration: underline;
 }
 
 /* ── Blog Cards ── */
@@ -409,10 +408,6 @@ body {
     text-decoration: none;
 }
 
-.blog-article a:hover {
-    text-decoration: underline;
-}
-
 .blog-article strong {
     color: var(--heading);
 }
@@ -498,7 +493,6 @@ body {
 
 .project-link:hover {
     color: var(--accent);
-    text-decoration: underline;
 }
 
 .lang-tag {
