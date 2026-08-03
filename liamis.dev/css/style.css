@@ -486,6 +486,19 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+
+.project-link {
+    font-size: 0.72rem;
+    color: var(--accent-dim);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.project-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
 }
 
 .lang-tag {
