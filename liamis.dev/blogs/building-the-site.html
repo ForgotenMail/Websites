@@ -21,104 +21,182 @@
             <!-- ══════════ ARTICLE HEADER ══════════ -->
 
             <h1 class="blog-article-title">Building the site</h1>
-            <div class="blog-article-date">YYYY-MM-DD</div>
+            <div class="blog-article-date">2026-08-03</div>
 
 
             <!-- ══════════ INTRO PARAGRAPH ══════════ -->
+              <p>
+              Over the past few days, I have been working on this new site of mine 
+              honestly, it turned out a lot better than I thought it would,
+              but as long as I have been making this site, 
+              I have been disapointed at the empty blog post area, its due for some change.
+              I figured, what better way to add a blog post, than about making the site itself.
+              This article is going to both hopefully fun and educational if you have not done something
+              like this in the past
+              </p>
 
-            <p>
-                This is an introduction paragraph. Write a hook here to grab the reader's
-                attention. You can use <strong>bold text</strong> for emphasis, and
-                <em>italic text</em> for subtle stress. You can also include
-                <a href="https://example.com">links to other sites</a> which will
-                appear in the accent green colour.
+              <h2>The Host</h2>
+              
+            <p> The last two times that I had hosted a website of my own
+                was on a mini PC of mine in my room, the biggest problem for
+                this was that my house does not have public IP addresses and
+                Cox Internet in all there glorry prevents incoming traffic on port 443 unless you pay for a special liscence. 
+                This meant, it was time to do some server hosting!
+                I had a decent amount of experience in this regard as I had hosted a few 
+                minecraft servers for my friends on servers with only a terminal
+                (was not to bad as I am a terminal purist, Ghostty my beloved)
+                I got a server from Hetzner with 2gb of Ram for around 15$/month.
+                I had originonally intended to have this server also host things like minecraft, 
+                but I knew that 2gb of RAM would not be enough. I was going to need to do port forwarding
+                (Ed. WAIT THATS A STORY FOR ANOTHER TIME, Check back in a few weeks for that article!)
+                After I got the server, I setup my dev enviroment, Git, Fish, Tmux, all the goodies I need
+                it was boring, but a needed part of the process. (If you have not codded in the terminal
+                you should learn about those tools!)
+                
             </p>
 
+              <h2>The Site Itself</h2>
+            <p>
+            
+              After I got things setup how I like them, I needed to start coding the site
+              I had codded a lot of sites in the past for fun, but those were local and using vite,
+              For this project I had to use a tool called Caddy. Caddy is a really neat peice of 
+              software that acts as a reverse proxy. Basicly, When you search up liamis.dev, 
+              your browsers goal is to get the files for the site and talk to the server hosting it,
+              but all your sever has is a name! Your browser usses your domain name, to then talk to DNS query,
+              All this is, is your browser talking to a server who has a list of domain names, and IP addresses for servers
+              You give it a name, and it gives you a location, then your browser talks to my server, they have a lovley conversation that goes like this
+              "I want to go to liamis.dev", "Yoooooo I gotchu dw", "Wait, how do I know if you are safe!??!?! ID PLEASE",
+              "Dw I got this certificate, its all fine, and here is the site you wanted", 5 seconds later "My person clicked on this link to your blogs site, whats the data for that"
+              "here ya go, blogs you said?" This conversation goes on for quite some time about what the browser needs, and the server giving it.
+              Few things to note here, 1 The job of caddy is to listen to incoming trafic from people, and then if they ask for liamis.dev, Caddy gives them the data for the site
+              That is what a reverse proxy does! Next the certificate is called a TLS certificate, It just says that I own my server, and domain. It also verifies that I will encrypt stuff for security!
+              Caddy gives me that certificate automatically
+              by getting it from Let's Encrypt. With all that done, Whats a domain name and how do you get one? All a domain name is something like amazon.com, or liamis.dev, 
+              we have them since people when they want to go to their site do not want to have to type in 127.00.10 since that is hard to remember! So we have Domains.
+              To get a domain, you buy it from someone, I got mine from porkbun for about 10$/year (not joking, they are CHEAP!), then I told porkbun, hey when someone goes to this DNS, send them to my server
+              It is that simple!
+
+            </p>
+
+            <p>
+              This whole process of DNS and Servers took me about 2 days and a couple hours of work, the first time that I did any of this, it took me about 5 hours in total for experience
+              The next thing that I had to do was setup git, git is really useful for keeping track of your code, and for servers!
+              On my laptop my coding enviroment has my tools, my plugins, My colour themes everything the way I like, and so I like to code on it instead of my servers.
+              This creates a problem though, how do I get my code onto that server?
+              To do that I create a repo(Repository) on github, code on my laptop, push code to github
+              then pull it down on my server. Lot easier said then done as git can be a bit anoying sometimes,
+              as if there is anything that could mess up your code at all git will throw a tantrum and make you fix it.
+              Good for security, really, really anoying if you aren't a wizard at ancient coding unless
+              Messsing with git probably took me 2 hours through coding all of this.
+              For the actual stie itself, I really do not want to explain each line, but long story short, I had opencode make most of it as boiler later
+              then I hand tuned things that I did not like, and personalized it a lot! In the end I got this site!
+            </p>
+
+            <h2>Epilouge</h2>
+          
+            <p>
+          Thank you so much for reading! It took me a lot of time to put this together so thank you for reading this stuff,
+          Bit clunky of an article, but It will get better in the future, I will be posting these every once and a while about what I am doing!
+          My next article should be a lot more technical and less thrown together btw!
+            </p>
+
+
+
+            <!-- <p> -->
+
+            <!--     This is an introduction paragraph. Write a hook here to grab the reader's -->
+            <!--     attention. You can use <strong>bold text</strong> for emphasis, and -->
+            <!--     <em>italic text</em> for subtle stress. You can also include -->
+            <!--     <a href="https://example.com">links to other sites</a> which will -->
+            <!--     appear in the accent green colour. -->
+            <!-- </p> -->
+            <!---->
 
             <!-- ══════════ SECTION HEADING ══════════ -->
 
-            <h2>Section Heading</h2>
-
-            <p>
-                Use <code>&lt;h2&gt;</code> tags for section headings within your
-                article. Inline <code>&lt;code&gt;</code> snippets look like this:
-                <code>const answer = 42;</code>. They're great for mentioning
-                function names, variable names, or short terminal commands like
-                <code>git push origin main</code>.
-            </p>
-
-            <p>
-                You can have multiple paragraphs per section. Keep them focused —
-                each paragraph should cover a single idea. The line height and
-                spacing are already set for comfortable reading.
-            </p>
-
-
+            <!-- <h2>Section Heading</h2> -->
+            <!---->
+            <!-- <p> -->
+            <!--     Use <code>&lt;h2&gt;</code> tags for section headings within your -->
+            <!--     article. Inline <code>&lt;code&gt;</code> snippets look like this: -->
+            <!--     <code>const answer = 42;</code>. They're great for mentioning -->
+            <!--     function names, variable names, or short terminal commands like -->
+            <!--     <code>git push origin main</code>. -->
+            <!-- </p> -->
+            <!---->
+            <!-- <p> -->
+            <!--     You can have multiple paragraphs per section. Keep them focused — -->
+            <!--     each paragraph should cover a single idea. The line height and -->
+            <!--     spacing are already set for comfortable reading. -->
+            <!-- </p> -->
+            <!---->
+            <!---->
             <!-- ══════════ CODE BLOCK ══════════ -->
 
-            <h2>Code Blocks</h2>
-
-            <p>
-                For longer code snippets use a <code>&lt;pre&gt;</code> block with
-                a <code>&lt;code&gt;</code> tag inside:
-            </p>
-
-<pre><code>package main
-
-import "fmt"
-
-func main() {
-    fmt.Println("Hello, world!")
-}</code></pre>
-
-            <p>
-                The code block has a dark background with a subtle border.
-                Code inside <code>&lt;pre&gt;</code> uses the site's monospace font
-                and has comfortable line height.
-            </p>
+<!--             <h2>Code Blocks</h2> -->
+<!---->
+<!--             <p> -->
+<!--                 For longer code snippets use a <code>&lt;pre&gt;</code> block with -->
+<!--                 a <code>&lt;code&gt;</code> tag inside: -->
+<!--             </p> -->
+<!---->
+<!-- <pre><code>package main -->
+<!---->
+<!-- import "fmt" -->
+<!---->
+<!-- func main() { -->
+<!--     fmt.Println("Hello, world!") -->
+<!-- }</code></pre> -->
+<!---->
+<!--             <p> -->
+<!--                 The code block has a dark background with a subtle border. -->
+<!--                 Code inside <code>&lt;pre&gt;</code> uses the site's monospace font -->
+<!--                 and has comfortable line height. -->
+<!--             </p> -->
 
 
             <!-- ══════════ ANOTHER SECTION ══════════ -->
 
-            <h2>Lists (Manual)</h2>
-
-            <p>
-                There's no automatic list styling, but you can create lists
-                manually with text:
-            </p>
-
-            <p>
-                — First item in the list<br>
-                — Second item, which might be longer<br>
-                — Third item to wrap things up
-            </p>
-
-            <p>
-                Or numbered with <strong>1.</strong>, <strong>2.</strong>, etc.<br>
-                1. First step<br>
-                2. Second step<br>
-                3. Third step
-            </p>
-
-
+            <!-- <h2>Lists (Manual)</h2> -->
+            <!---->
+            <!-- <p> -->
+            <!--     There's no automatic list styling, but you can create lists -->
+            <!--     manually with text: -->
+            <!-- </p> -->
+            <!---->
+            <!-- <p> -->
+            <!--     — First item in the list<br> -->
+            <!--     — Second item, which might be longer<br> -->
+            <!--     — Third item to wrap things up -->
+            <!-- </p> -->
+            <!---->
+            <!-- <p> -->
+            <!--     Or numbered with <strong>1.</strong>, <strong>2.</strong>, etc.<br> -->
+            <!--     1. First step<br> -->
+            <!--     2. Second step<br> -->
+            <!--     3. Third step -->
+            <!-- </p> -->
+            <!---->
+            <!---->
             <!-- ══════════ CONCLUSION ══════════ -->
 
-            <h2>Wrapping Up</h2>
-
-            <p>
-                End your article with a conclusion that summarises your main points
-                or gives the reader something to take away. This is also a good
-                place to link to related articles or your <a href="#">projects</a>.
-            </p>
-
-            <p>
-                That's it! Copy this file, rename it, and replace all the
-                placeholder content with your own writing.
-            </p>
-
-        </article>
-    </main>
-
+    <!--         <h2>Wrapping Up</h2> -->
+    <!---->
+    <!--         <p> -->
+    <!--             End your article with a conclusion that summarises your main points -->
+    <!--             or gives the reader something to take away. This is also a good -->
+    <!--             place to link to related articles or your <a href="#">projects</a>. -->
+    <!--         </p> -->
+    <!---->
+    <!--         <p> -->
+    <!--             That's it! Copy this file, rename it, and replace all the -->
+    <!--             placeholder content with your own writing. -->
+    <!--         </p> -->
+    <!---->
+    <!--     </article> -->
+    <!-- </main> -->
+    <!---->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         const statusDropdown = document.querySelector('.status-dropdown');
