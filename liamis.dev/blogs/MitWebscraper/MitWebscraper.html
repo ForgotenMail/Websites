@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MIT Webscraper</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        .blog-article blockquote {
+            margin: 1.5rem 0;
+            padding: 1.5rem 1.75rem;
+            border-left: 3px solid var(--accent-dim);
+            background: var(--card-bg);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .blog-article blockquote p {
+            margin-bottom: 1rem;
+        }
+
+        .blog-article blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .blog-article h3 {
+            font-size: 1.05rem;
+            color: var(--heading);
+            font-weight: 600;
+            margin: 2rem 0 0.6rem;
+        }
+
+        .blog-article ul,
+        .blog-article ol {
+            margin: 1rem 0 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .blog-article li {
+            margin: 0.5rem 0;
+        }
+
+        .blog-article .email-quote {
+            margin: 1.5rem 0;
+            padding: 1.5rem 1.75rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+
+        .blog-article .email-quote p {
+            font-size: 0.9rem;
+        }
+
+        .blog-article .article-list {
+            margin: 1rem 0 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .blog-article .article-list li {
+            margin: 0.5rem 0;
+        }
+
+        .blog-article .article-list .author {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .blog-article .stats {
+            width: 100%;
+            margin: 1.5rem 0;
+            border-collapse: collapse;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            font-size: 0.85rem;
+        }
+
+        .blog-article .stats th,
+        .blog-article .stats td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .blog-article .stats th {
+            background: var(--tag-bg);
+            color: var(--heading);
+            font-weight: 600;
+        }
+
+        .blog-article .stats tr:last-child td {
+            border-bottom: none;
+        }
+
+        .blog-article .stats td.number,
+        .blog-article .stats th.number {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            color: var(--accent);
+        }
+
+        .blog-article .stats tbody tr:hover {
+            background: var(--hover-bg);
+        }
+
+        .blog-article .terminal-table {
+            margin: 1.5rem 0;
+            padding: 1.2rem 1.4rem;
+            overflow-x: auto;
+            background: var(--sidebar-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .blog-article .result-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .blog-article .result-grid div {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .blog-article .result-grid div:nth-last-child(-n + 2) {
+            border-bottom: none;
+        }
+
+        .blog-article .result-grid .value {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .blog-article .callout {
+            margin: 1.5rem 0;
+            padding: 1.25rem 1.5rem;
+            background: var(--tag-bg);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 6px;
+        }
+
+        .blog-article .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            .blog-article .stats th,
+            .blog-article .stats td {
+                padding: 0.6rem 0.75rem;
+            }
+
+            .blog-article .result-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-article .result-grid .value {
+                text-align: left;
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<main class="main">
+    <a href="../../" class="back-link">&larr; Back to Blogs</a>
+
+    <article class="blog-article">
+
+        <h1 class="blog-article-title">MIT Webscraper</h1>
+        <div class="blog-article-date">2026-08-15</div>
+
+        <p>
+            When I reached out to MIT they told me their personal blog site had
+            7,270 blog posts. I know now that they have exactly 9,098, as well as
+            every author, classifications of each article, and enough statistics
+            for a blog post. (Hey, I should make one of those!)
+        </p>
+
+        <p>
+            This journey started about a month ago. I was researching MIT admissions
+            on their blog site. MIT themselves constantly recommend
+            <a href="https://mitadmissions.org/blogs/">their blog</a>.
+            This site contains some of the best admissions advice that I can find
+            anywhere, but the vast majority of recent articles seem to not contain
+            any advice at all.
+        </p>
+
+        <p>
+            The most recent article on the site is this:
+        </p>
+
+        <blockquote>
+            <p>
+                <em>
+                    towards the end of october, back in 2024, i was walking back to
+                    my dorm and i was about to make the turn from the asphalted
+                    footpath that went north from the music building (under
+                    construction then) onto vassar st., my thoughts still swimming
+                    above me in the elation of starry nights and tall roofs and
+                    vents to be crawled over and squeezed through, when i realized
+                    that i was halfway through the semester.
+                </em>
+            </p>
+
+            <p>
+                <em>
+                    it was 3 am then, crickets humming in the grass, and i knew then
+                    that i was one-sixteenth of the way through my time at MIT.
+                </em>
+            </p>
+
+            <p>
+                <em>
+                    but that was a good thing then, because one-sixteenth of my time
+                    at MIT had taken a long while. i knew then that i had fifteen
+                    more copies of what i had experienced so far,
+                </em>
+            </p>
+
+            <p>
+                <em>
+                    fifteen times more psets and morning exams in walker memorial
+                    and evening square dance with warm bundt cake resting on the
+                    table and linguistics essays and midday bluebike errands to
+                    chinatown and auroras and books read on the grass at boston
+                    commons and leaves along vassar st. turning to the color of the
+                    sunset.
+                </em>
+            </p>
+
+            <p>
+                <em>
+                    i knew that i had fifteen times more of all this.
+                </em>
+            </p>
+
+            <p>
+                <em>
+                    but now? now i am halfway through. and already i do not have
+                    many of those fifteen left.
+                </em>
+            </p>
+        </blockquote>
+
+        <p>
+            Where is the admissions advice? For a site that is about MIT admissions
+            this is a pretty poor article.
+        </p>
+
+        <p>
+            This is common as well. Looking through the first pages of the site,
+            you can easily see that most of the articles on this site are not about
+            admissions at all. They are blog posts <strong>for students already in
+            MIT</strong>.
+        </p>
+
+        <p>
+            No matter how much I claim that all the blog posts are not admissions
+            focused, I cannot prove it. According to MIT there are more than 7,000
+            articles. I cannot look at all of them!
+        </p>
+
+        <h2>MIT's Response</h2>
+
+        <p>
+            Email response from MIT from 7/30/26:
+        </p>
+
+        <div class="email-quote">
+            <p>
+                There have been over 7,270
+                <a href="https://mitadmissions.org/blogs/">
+                    blog entries
+                </a>
+                posted to MITAdmissions.org. They're all worth reading, but there
+                are a few you really need to read. These are the blog entries that
+                cut deep into our admissions process. Not only what we're looking
+                for, but what we want from you, and how much we care about the work
+                that we do. These blogs will help you "get" what the MIT admissions
+                process is all about.
+            </p>
+
+            <p><em>They include, in no particular order:</em></p>
+
+            <ul class="article-list">
+                <li>
+                    <a href="https://mitadmissions.org/blogs/entry/its-more-than-a-job/">
+                        It's More Than A Job
+                    </a>
+                    <span class="author">by Ben Jones</span>
+                </li>
+
+                <li>
+                    <a href="https://mitadmissions.org/blogs/entry/applying-sideways/">
+                        Applying Sideways
+                    </a>
+                    <span class="author">by Chris Peterson</span>
+                </li>
+
+                <li>
+                    <a href="https://mitadmissions.org/blogs/entry/bleary-eyed/">
+                        Bleary-Eyed
+                    </a>
+                    <span class="author">by Mikey Yang</span>
+                </li>
+
+                <li>
+                    <a href="https://mitadmissions.org/blogs/entry/the-rooms-where-it-happens/">
+                        The Room(s) Where It Happens
+                    </a>
+                    <span class="author">by Jessica Ch'ng</span>
+                </li>
+
+                <li>
+                    <a href="https://mitadmissions.org/blogs/entry/there-is-no-formula/">
+                        There Is No Formula
+                    </a>
+                    <span class="author">by Ben Jones</span>
+                </li>
+            </ul>
+        </div>
+
+        <p>
+            <strong>
+                (BTW, those articles listed are some of the only articles that I
+                have found, and people have told me about, that talk about
+                admissions.)
+            </strong>
+        </p>
+
+        <p>
+            This is also a pretty old statistic as I now know there are exactly
+            9,098 articles on that site.
+        </p>
+
+        <h2>Building the Scraper</h2>
+
+        <p>
+            When I was in 7th grade I made a "search engine." To be honest, it kind
+            of sucked and did not work well, but it did teach me how to make a link
+            scraper and scrape websites in Python.
+        </p>
+
+        <p>
+            A few weeks beforehand I also made my first thing using AI in Python
+            with Ollama. This gave me an idea: what if I find all the blog article
+            posts, and then use AI to classify them?
+        </p>
+
+        <p>
+            That is why I am now writing this blog post here and now.
+        </p>
+
+        <p>
+            Starting this project I knew that the challenge would not be to
+            actually do the scraping and analyzing. That is not difficult to make.
+            The challenge would be speed.
+        </p>
+
+        <p>
+            Since I am writing this in Python, it was going to be a challenge to
+            make it work quickly and efficiently. Writing this in a language like
+            Go would have been a good idea, but I had no idea how to make a link
+            scraper in it!
+        </p>
+
+        <h3>Scraping an Article</h3>
+
+        <p>
+            To start this project out I made a simple program that would go to a
+            blog post, get all of the text, title, date released, etc.
+        </p>
+
+        <p>
+            I was worried that getting this data would be difficult, but
+            unironically, they literally have a single div for all of the text in
+            the article and a single div for the header that contains the article
+            name, author and date released.
+        </p>
+
+        <p>
+            <strong>
+                IT'S LIKE THEY WANTED ME TO SCRAPE THE SITE.
+            </strong>
+        </p>
+
+        <p>
+            The names of these divs were
+            <code>article__body</code> and
+            <code>page-topper_tittle</code> respectively.
+            THIS MADE THINGS EASY BEYOND BELIEF.
+        </p>
+
+        <p>
+            I started out with the article
+            <a href="https://mitadmissions.org/blogs/entry/applying-sideways/">
+                Applying Sideways
+            </a>,
+            which is easily the most referenced article about MIT admissions.
+            It is a good article, but I do not 100% believe it.
+            (That is a story for another day.)
+        </p>
+
+        <p>
+            Once I scraped the first article, it should have been obvious:
+            it was a big article. I do not actually need the entire article to
+            classify it.
+        </p>
+
+        <p>
+            The beginning of the article sets the scene, and the ending is the
+            conclusion, just as your 5th grade teacher told you. The subject of an
+            article is often in the first or last sentence.
+        </p>
+
+        <p>
+            Because of this I decided to cut out the middle 40% of the article to
+            save tokens. I chose this because I did not want to cut articles too
+            short if they were short articles, but also wanted to cut out a decent
+            chunk.
+        </p>
+
+        <p>
+            Once I had gotten all the data from an article, I would save it to a
+            JSON file for further analysis.
+        </p>
+
+        <h3>Link Scraping</h3>
+
+        <p>
+            The biggest problem with this current system is that I only had one
+            article to analyze, and I had thousands more articles that I did not
+            have the links to!
+        </p>
+
+        <p>
+            Link scraper time!
+        </p>
+
+        <p>
+            The structure of this scraper is pretty simple. The idea is that I
+            have a list of links that I need to visit. As soon as I visit a link,
+            it is removed from that list.
+        </p>
+
+        <p>
+            I check if that link contains the prefix:
+            <a href="https://mitadmissions.org/blogs/">
+                https://mitadmissions.org/blogs/
+            </a>
+        </p>
+
+        <p>
+            This was to make sure that I only scraped the MIT website, not any
+            other sites. As soon as I let the bot escape from this site I would be
+            scraping billions of sites. My poor laptop cannot handle that.
+        </p>
+
+        <p>
+            If the link contained that prefix I would check all the links on that
+            site using Beautiful Soup. Great library, by the way. Every time I use
+            it I have zero complaints. It works first try and makes scrapers really
+            easy to make.
+        </p>
+
+        <p>
+            Then I check each of those links to make sure they are actually full
+            links.
+        </p>
+
+        <p>
+            When doing these projects I will often find links like
+            <code>/applying-sideways</code>,
+            <code>#body</code>, and other "fragment" links.
+        </p>
+
+        <p>
+            These links work fine as long as you are already on a webpage and are
+            really convenient if you are trying to navigate a page, but for bots
+            those are your worst nightmare because they will just waste time and
+            not give you any more information.
+        </p>
+
+        <p>
+            I used a handy library called URL parse for this.
+        </p>
+
+        <p>
+            If a link does not fail any of the checks it is saved to the list of
+            URLs to visit. Once a site is finished I save it to a set of URLs.
+            I continue this loop until there are no more URLs to visit in my list.
+        </p>
+
+        <p>
+            I then trim all of the URLs. Even though all my sites are in that
+            subdirectory, I only want blog posts, and luckily for me all blog posts
+            start with this:
+        </p>
+
+        <p>
+            <a href="https://mitadmissions.org/blogs/entry/">
+                https://mitadmissions.org/blogs/entry/
+            </a>
+        </p>
+
+        <p>
+            I swear to god that MIT is begging for people to scrape them.
+            I mean, it is MIT, so it might be on purpose.
+        </p>
+
+        <h2>AI Classification</h2>
+
+        <p>
+            Once I have these links I send them to the scraper, and it gives me a
+            JSON file of all the articles, dates released and authors.
+        </p>
+
+        <p>
+            By the way, the length of the JSON file in lines was
+            <strong>45,492</strong>.
+            I am so glad I coded this in Neovim. VS Code would have died by line
+            500!
+        </p>
+
+        <p>
+            I wanted these so that I could do some interesting statistics, like
+            what articles before a certain date are like.
+        </p>
+
+        <p>
+            Then the interesting thing happens: it is shipped off to an Ollama
+            model.
+        </p>
+
+        <p>
+            This is not a particularly interesting piece of code. All I do is give
+            it some categories to organize into:
+        </p>
+
+        <ul>
+            <li>Student Admissions</li>
+            <li>Student Blog Posts</li>
+            <li>Student Stories</li>
+            <li>Memes and Shitposts</li>
+            <li>Other</li>
+        </ul>
+
+        <p>
+            Then I send it off to the AI and save the results in a JSON file while
+            it is running.
+        </p>
+
+        <p>
+            This is done so that if for some reason the program stops, it can start
+            up again and not lose several hours of inference.
+        </p>
+
+        <p>
+            Then, when it is all done, I put it in Postgres.
+        </p>
+
+        <h2>Now for the Results!</h2>
+
+        <div class="result-grid">
+            <div>Student Admissions</div>
+            <div class="value">2,089 (23.0%)</div>
+
+            <div>Student Blog Posts</div>
+            <div class="value">6,510 (71.6%)</div>
+
+            <div>Student Stories</div>
+            <div class="value">9 (0.1%)</div>
+
+            <div>Memes and Shitposts</div>
+            <div class="value">81 (0.9%)</div>
+
+            <div>Other</div>
+            <div class="value">409 (4.5%)</div>
+
+            <div><strong>Total</strong></div>
+            <div class="value"><strong>9,098</strong></div>
+        </div>
+
+        <p>
+            Wow... I was really, really wrong about the Student Admissions.
+        </p>
+
+        <p>
+            One thing that I was worried about is the accuracy of the AI. I checked
+            the first 10 articles that the AI classified, and I give it an 8/10.
+        </p>
+
+        <div class="callout">
+            <p>
+                <strong>Ed. Note:</strong>
+                I realize that this was not the most thorough analyzation of the
+                data. I am thinking about revisiting this, but I was NOT in the mood
+                for looking through random articles for an hour.
+            </p>
+        </div>
+
+        <p>
+            At face value, this looks pretty poor. The two articles that failed
+            were:
+        </p>
+
+        <ol>
+            <li>
+                One about what a student did that year and what they learned,
+                classified as Student Admissions:
+                <a href="https://mitadmissions.org/blogs/entry/learning-by-doing/">
+                    Learning by Doing
+                </a>.
+            </li>
+
+            <li>
+                One about the process to apply to be a blogger that year,
+                classified as a Student Blog Post:
+                <a href="https://mitadmissions.org/blogs/entry/be-a-blogger-2026/">
+                    Be a Blogger 2026
+                </a>.
+            </li>
+        </ol>
+
+        <p>
+            Fun fact: the person who wrote the second article was the same guy who
+            wrote Applying Sideways, one of the best articles on that site ever
+            made!
+        </p>
+
+        <p>
+            The first one is just plain wrong, but it is not ridiculously wrong.
+            I would not classify it that way. That said, it has some reasonable
+            interpretation to classify it that way.
+        </p>
+
+        <p>
+            The second article did talk about the man's personal life, and the
+            majority of the part that was talking about being a blogger was in the
+            middle 40%, which makes sense why it was classified wrong.
+        </p>
+
+        <p>
+            It would probably be a good idea to rerun it with modifications, but I
+            really do not want to wait another 10 hours for it to finish.
+        </p>
+
+        <h2>Author Statistics</h2>
+
+        <p>
+            The biggest shock I got when looking through the data was this:
+        </p>
+
+        <table class="stats">
+            <thead>
+                <tr>
+                    <th>Author</th>
+                    <th class="number">Articles</th>
+                    <th class="number">Percentage</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Matt McGann '00</td>
+                    <td class="number">695</td>
+                    <td class="number">7.64%</td>
+                </tr>
+
+                <tr>
+                    <td>Chris Peterson SM '13</td>
+                    <td class="number">436</td>
+                    <td class="number">4.79%</td>
+                </tr>
+
+                <tr>
+                    <td>Waly N. '24</td>
+                    <td class="number">244</td>
+                    <td class="number">2.68%</td>
+                </tr>
+
+                <tr>
+                    <td>Sam M. '07</td>
+                    <td class="number">239</td>
+                    <td class="number">2.63%</td>
+                </tr>
+
+                <tr>
+                    <td>Snively '11</td>
+                    <td class="number">233</td>
+                    <td class="number">2.56%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            The first digit is how many articles those people have written, and the
+            percentage is the percentage of all articles written they have done.
+        </p>
+
+        <p>
+            <strong>
+                The top five authors have written over 20% of all the articles on
+                the site.
+            </strong>
+        </p>
+
+        <p>
+            There are only 182 authors, almost one for each country! With 9,098
+            articles we should expect around 50 articles per person.
+        </p>
+
+        <p>
+            13.74% of all authors on the site have written less than 5 articles,
+            and 12.09% of authors have written more than 100 articles.
+            The median amount of articles written is 25.
+            The trimmed mean after removing the top and bottom 15% is
+            32.2151 articles.
+        </p>
+
+        <div class="callout">
+            <p>
+                <strong>
+                    Over a quarter of all the authors are at the extreme ends of
+                    the spectrum, either writing very little or a lot of articles.
+                </strong>
+            </p>
+        </div>
+
+        <p>
+            These statistics are weird, but not out of the norm.
+            Chris Peterson is an admissions officer, and Snively is very active
+            online, even being a moderator on a subreddit called
+            <code>r/MITadmissions</code>.
+        </p>
+
+        <h2>Are the Top Authors Actually Writing About Admissions?</h2>
+
+        <p>
+            The top two authors are admissions officers. The rest being students,
+            you would think that the majority of their posts would be about
+            admissions, right?
+        </p>
+
+        <p>
+            Nope.
+        </p>
+
+        <table class="stats">
+            <thead>
+                <tr>
+                    <th>Classification</th>
+                    <th class="number">Articles</th>
+                    <th class="number">Percentage</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Student Blog Posts</td>
+                    <td class="number">1,892</td>
+                    <td class="number">65.99%</td>
+                </tr>
+
+                <tr>
+                    <td>Student Admissions</td>
+                    <td class="number">708</td>
+                    <td class="number">24.69%</td>
+                </tr>
+
+                <tr>
+                    <td>Other</td>
+                    <td class="number">239</td>
+                    <td class="number">8.34%</td>
+                </tr>
+
+                <tr>
+                    <td>Memes and Shitposts</td>
+                    <td class="number">27</td>
+                    <td class="number">0.94%</td>
+                </tr>
+
+                <tr>
+                    <td>Student Stories</td>
+                    <td class="number">1</td>
+                    <td class="number">0.03%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            The top ten authors wrote 24.69% of their articles about admissions
+            instead of the overall 23%.
+        </p>
+
+        <p>
+            OK, maybe having students in the top was bringing the average down.
+        </p>
+
+        <p>
+            Top 2 authors' percentage about admissions:
+            <strong>35.09%.</strong>
+        </p>
+
+        <p>
+            THAT LOW?!?!?
+        </p>
+
+        <p>
+            From actual admissions officers, only one-third of their articles are
+            about admissions.
+        </p>
+
+        <p>
+            I checked articles from one author and I can verify those stats are
+            actually good.
+        </p>
+
+        <h2>Has the Blog Changed Over Time?</h2>
+
+        <p>
+            OK, OK. Maybe the articles just got less and less admissions focused as
+            time went on. So maybe in the beginning of the blog posts there were a
+            lot more articles about admissions, right?
+        </p>
+
+        <div class="terminal-table">
+            start_year | end_year | admissions_articles | total_articles | admissions_percentage
+            <br>
+            ------------+----------+---------------------+----------------+-----------------------
+            <br>
+            2005       | 2007     | 470                 | 2020           | 23.27
+        </div>
+
+        <p>
+            Why does this happen?
+        </p>
+
+        <p>
+            For a site that is cited as being about applying and admissions into
+            MIT, does it look like the majority of the articles are not about that
+            at all?
+        </p>
+
+        <p>
+            Before I began this project, a person told me that this is on purpose.
+            Part of the reason why this happens is to show what the culture at MIT
+            is like.
+        </p>
+
+        <p>
+            They want to show what students at MIT are like and who they are.
+            By having a place where all the students can make posts is an effective
+            way to do this.
+        </p>
+
+        <p>
+            The only problem is that the forms are heavily moderated.
+            To just make a post you have to be accepted as a blogger and fill out
+            an application, and you then, as far as I know, go through an editor
+            before it is posted.
+        </p>
+
+        <p>
+            With a rough total of 259,952 students at 11,900 students a year,
+            only 182 of them have become authors on these blog posts.
+            Slightly less, as some people on the blogs are not MIT students.
+        </p>
+
+        <p>
+            0.070013% of students have become a blogger.
+            Which means that roughly 8 students a year become bloggers.
+            The culture of MIT is propagated by these few.
+        </p>
+
+        <h2>Conclusion</h2>
+
+        <p>
+            I think that this blog post has been shifting since it started.
+            The amount of admissions articles was slightly higher in the past,
+            and so it makes sense for a blog post that is 22 years old for it to
+            have shifted values.
+        </p>
+
+        <p>
+            I am a little frustrated about this, but I am not infuriated about it.
+        </p>
+
+        <p>
+            As I have been writing this I have read more and more articles and I
+            have gotten an appreciation for these blog posts a lot more.
+            Even if they are not all focused about admissions, I still enjoy
+            reading the articles.
+        </p>
+
+        <p>
+            A lot of them, while not directly about admissions, are good reads and
+            would be valuable to any future applicant.
+        </p>
+
+        <p>
+            Thank you so much for reading this article!
+        </p>
+
+        <p>
+            It took me a while to write it, so if you got to it from Hacker News
+            please leave a comment :)
+        </p>
+
+        <p>
+            And for those who found it elsewhere, I promise a comment system on
+            the blog site itself is in the works!
+        </p>
+
+    </article>
+</main>
+</body>
+</html>
